@@ -47,6 +47,23 @@
   </div>
   {{ end }}
 
+  {{ if $item.Params.publication_short }}
+  <div class="article-metadata-publication" itemprop="publication">
+    <i>{{- $item.Params.publication | markdownify -}}&nbsp;({{- $item.Params.publication_short | markdownify -}})</i>{{- .Date.Format ", Jan 2006" -}}
+  </div>
+  {{ else }}
+  <div class="article-metadata-publication" itemprop="publication">
+    <i>{{- $item.Params.publication | markdownify -}}</i>{{- .Date.Format ", Jan 2006" -}}
+  </div>
+  {{ end }}  
+
+
+  {{ if $item.Params.award}}
+  <div class="article-metadata-award">
+    {{- $item.Params.award | markdownify -}}
+  </div>  
+  {{end}}
+
   {{ if $show_buttons }}
   <div class="btn-links">
     {{ partial "page_links" (dict "page" $item "is_list" 1) }}
